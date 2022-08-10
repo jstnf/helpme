@@ -1,0 +1,55 @@
+body {
+  background-color: #252526;
+  color: whitesmoke;
+  text-align: center;
+  width: auto;
+  max-width: 450px;
+  font-family: "Open Sans";
+  margin-top: 15vh;
+  margin-bottom: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  transform: scale(1.2)
+}
+
+p {
+  color: #b0b0b0;
+}
+
+.input-container {
+  width: 100%;
+  text-align: center;
+  display: flexbox;
+}
+ 
+.gh-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #a04acb;
+  border-radius: 20px;
+  background: #252526;
+  color: whitesmoke;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: border-color 100ms linear, width 170ms ease-in-out, transform 190ms ease-in-out;
+}
+
+.gh-input:hover {
+  border-color: whitesmoke;
+  transition: border-color 200ms ease-in-out;
+}
+
+.gh-input:focus {
+  border-color: whitesmoke;
+}
+
+.gh-input:not(:placeholder-shown) {
+  width: calc(100% - 45px);
+  transform: translateX(45px);
+  transition: width 170ms ease-in-out, transform 200ms ease-in-out;
+}
+
+a {
+  color: #aa6bca;
+}
