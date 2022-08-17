@@ -32,7 +32,7 @@ p {
   box-sizing: border-box;
   margin-top: 10px;
   margin-bottom: 10px;
-  transition: border-color 100ms linear, width 170ms ease-in-out, transform 190ms ease-in-out;
+  transition: border-color 100ms linear;
 }
 
 .gh-input:hover {
@@ -42,12 +42,6 @@ p {
 
 .gh-input:focus {
   border-color: whitesmoke;
-}
-
-.gh-input:not(:placeholder-shown) {
-  width: calc(100% - 45px);
-  transform: translateX(45px);
-  transition: width 170ms ease-in-out, transform 200ms ease-in-out;
 }
 
 a {

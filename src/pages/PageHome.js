@@ -31,8 +31,8 @@ class PageHome extends React.Component {
           <h1>helpme 👍</h1>
         </header>
         <div>
-          <p>Generate, edit, and polish a README file for any GitHub repository.</p>
-          <p>Enter a URL to your GitHub repo to get started.</p>
+          <p>Generate, edit, and polish README files for any GitHub repository.</p>
+          <p>Enter the URL to your GitHub repo to get started.</p>
         </div>
         <div className='input-container'>
           <form className='gh-form' onSubmit={this.handleSubmit}>
@@ -43,10 +43,10 @@ class PageHome extends React.Component {
           </div>
         </div>
         <div>
-          <p>or <Link to='/editor'>get started without a repository.</Link></p>
+          <p>or <Link to='/editor'>get started without a repository</Link>.</p>
         </div>
         <footer>
-          <h4>Created by <a href='github.com/jstnf'>Justin F</a> with ❤️</h4>
+          <h4>Created by <a href='https://github.com/jstnf'>Justin F</a> with ❤️.</h4>
         </footer>
       </div>  
     );
