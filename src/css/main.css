@@ -18,8 +18,8 @@ p {
 
 .input-container {
   width: 100%;
-  text-align: center;
-  display: flexbox;
+  display: flex;
+  flex-flow: column nowrap;
 }
  
 .gh-input {

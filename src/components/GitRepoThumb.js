@@ -1,6 +1,9 @@
 import React from 'react';
+import GitRepoThumbLangCircle from './GitRepoThumbLangCircle';
 
 import '../css/loading.css';
+import '../css/gitrepothumb.css';
+import GitRepoThumbStats from './GitRepoThumbStats';
 
 const GitUrlParse = require("git-url-parse");
 const IsGitHubUrl = require("is-github-url");
@@ -112,10 +115,12 @@ class GitRepoThumb extends React.Component {
   prepareThumbnail(repo, languages) {
     let thumbnail = {};
     thumbnail.name = repo.full_name;
+    thumbnail.owner_name = repo.owner.login;
+    thumbnail.repo_name = repo.name;
     thumbnail.description = repo.description;
-    thumbnail.avatar = repo.avatar_url;
+    thumbnail.avatar = repo.owner.avatar_url;
     thumbnail.stars = repo.stargazers_count;
-    thumbnail.watchers = repo.watchers_count;
+    thumbnail.watchers = repo.subscribers_count;
     thumbnail.languages = [];
 
     Object.keys(languages).forEach(key => {
@@ -135,7 +140,21 @@ class GitRepoThumb extends React.Component {
     } else if (this.state.status === 2) {
       // We have a repository fetched and ready    
       return (
-        <p>{this.state.thumbnail.name}</p> // TODO: handle thumbnail!
+        <div className='thumbnail git-theme'>
+          <div className='thumb-img-container'>
+          <a href={'https://github.com/' + this.state.thumbnail.owner_name} target='_blank'><img src={this.state.thumbnail.avatar} alt={this.state.thumbnail.name + '\'s avatar'} width='40' height='40'/></a>
+          </div>
+          <div className='thumb-details'>
+            <div>
+              <p className='thumb-details-repo-name'>
+                <a href={'https://github.com/' + this.state.thumbnail.owner_name} target='_blank'>{this.state.thumbnail.owner_name}</a> / <b><a href={'https://github.com/' + this.state.thumbnail.name} target='_blank'>{this.state.thumbnail.repo_name}</a></b>
+              </p>
+            </div>
+            <div><GitRepoThumbLangCircle languages={this.state.thumbnail.languages} /></div>
+            <div><p className='thumb-details-repo-desc'>{this.state.thumbnail.description}</p></div>
+            <div><GitRepoThumbStats stars={this.state.thumbnail.stars} watchers={this.state.thumbnail.watchers} /></div>
+          </div>
+        </div>
       );
     } else if (this.state.status === 3) {
       // Error occured when resolving repository  
@@ -145,5 +164,12 @@ class GitRepoThumb extends React.Component {
     }
   }
 }
+
+/*
+
+            <div><p className='thumb-details-repo-name'><a href={'https://github.com/' + this.state.thumbnail.name}>{this.state.thumbnail.name}</a></p></div>
+            <div><GitRepoThumbLangCircle languages={this.state.thumbnail.languages} /></div>
+            <div><p className='thumb-details-repo-desc'>{this.state.thumbnail.description}</p></div>
+*/
 
 export default GitRepoThumb;
